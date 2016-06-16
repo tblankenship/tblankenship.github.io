@@ -24,15 +24,44 @@ function setModeButtons(){
 			modeButtons[0].classList.remove("selected");
 			modeButtons[1].classList.remove("selected");
 			modeButtons[2].classList.remove("selected");
+			modeButtons[3].classList.remove("selected");
+			modeButtons[4].classList.remove("selected");
 			this.classList.add("selected");
 
 			if (this.textContent === "Easy") {
-				numSquares = 3
+				numSquares = 4
+				document.querySelector("#container").classList.add("a");
+				document.querySelector("#container").classList.remove("b");
+				document.querySelector("#container").classList.remove("c");
+				document.querySelector("#container").classList.remove("d");
+
 			} else if (this.textContent === "Medium") {
-				numSquares = 6
-			} else if (this.textContent === "Hard") {
 				numSquares = 9
+				document.querySelector("#container").classList.remove("a");
+				document.querySelector("#container").classList.remove("b");
+				document.querySelector("#container").classList.remove("c");
+				document.querySelector("#container").classList.remove("d");
+
+			} else if (this.textContent === "Hard") {
+				numSquares = 16
+				document.querySelector("#container").classList.remove("a");
+				document.querySelector("#container").classList.remove("c");
+				document.querySelector("#container").classList.remove("d");
+				document.querySelector("#container").classList.add("b");
+			} else if (this.textContent === "Insane") {
+				numSquares = 25
+				document.querySelector("#container").classList.remove("a");
+				document.querySelector("#container").classList.remove("b");
+				document.querySelector("#container").classList.remove("d");
+				document.querySelector("#container").classList.add("c");
+			} else if (this.textContent === "Psycho") {
+				numSquares = 36
+				document.querySelector("#container").classList.remove("a");
+				document.querySelector("#container").classList.remove("b");
+				document.querySelector("#container").classList.remove("c");
+				document.querySelector("#container").classList.add("d");
 			}
+
 			reset();
 		});
 	}
@@ -43,7 +72,7 @@ function setSquares(){
 	for(var i = 0; i < squares.length; i++){
 		//Adding click listerns to squares
 		squares[i].addEventListener("click", function(){
-		//grabs color of clicked square	
+		//grabs color of clicked square
 		var clickedColor = this.style.background;
 		//compare color to the clicked color
 		if(clickedColor == pickedColor){
@@ -69,7 +98,7 @@ function reset(){
 	colorDisplay.textContent = pickedColor;
 	messageDisplay.textContent = "";
 	resetButton.textContent = "New Colors";
-	
+
 	//change colors of squares
 	for(var i = 0; i < squares.length; i++){
 		if(colors[i]){
@@ -78,7 +107,7 @@ function reset(){
 		} else {
 			squares[i].style.display = "none";
 		}
-		
+
 	}
 	h1.style.background = "steelblue";
 
@@ -130,7 +159,3 @@ function randomColor(){
 	return "rgb(" + r + ", " + g + ", " + b + ")";
 
 }
-
-
-
-
